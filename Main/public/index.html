@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0,user-scalable=0">
+    <title>Mochi Pounder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/Win.ico" type="image/x-icon">
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
+
+    <script src="https://unpkg.com/@free-side/audioworklet-polyfill/dist/audioworklet-polyfill.js" type="text/javascript"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js" integrity="sha512-WzkwpdWEMAY/W8WvP9KS2/VI6zkgejR4/KTxTl4qHx0utqeyVE0JY+S1DlMuxDChC7x0oXtk/ESji6a0lP/Tdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="sketch.js"></script>
+</head>
+<body>
+    <div id="splashscreen" class="page show">
+        <div id="title">
+            <img class="pic" src="./assets/boy-hammer.gif" alt="">
+            <h1>餅つき <br> Mochi Pounder</h1>
+            <img class="pic" src="./assets/hammer-girl.gif" alt="">
+        </div>
+        <button  class="startbutton" id="startbutton">start</button>
+        
+    </div>
+    <div id="startscreen" class="page">
+        <h2 id="startTitle">SWING TO START</h2>
+        <h2 id="player">↑ <br> IS STARTING</h2>
+        <h2 id="countdown">15</h2>
+        <h2 id="startTime">3</h2>
+        <div id="score">0</div>
+        <div id="start1">PLAYER 1</div>
+        <div id="start2">PLAYER 2</div>
+        <button class="startbutton" id="restartbutton">restart</button>
+
+    </div>
+
+
+
+    <div id="side-1" class="page">
+        <div class="ipContainer">
+            <h2 id="ip">ip adresse</h2>
+            <hr>
+            <p>Denne side er hostet af en node.js server. Den modtager besked fra serveren og viser det når der kommer UDP kommunikation.</p>
+        </div>
+        <div id="udp-messages"></div>
+    </div>
+</body>
+</html>

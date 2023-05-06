@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@font-face {
+  font-family: PixelFont;
+  src: url('./assets/dpcomic.ttf');
+}
+@font-face {
+  font-family: jap;
+  src: url('./assets/kato.regular.ttf');
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PixelFont';
+}
+
+#udp-messages {
+  padding: 2rem;
+  width:100%;
+  height:40vh;
+  border-radius: 2rem;
+  background-color: lightblue;
+  overflow:scroll;
+}
+
+.page {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  place-items: center;
+  background-color: aliceblue;
+}
+
+.show{
+  left:0;
+}
+
+#splashscreen{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-image: url('./assets/Background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+
+#title {
+  display: grid;
+  height: 30vh;
+  width: 100vw;
+  /* border: solid 1px black; */
+  grid-template-columns: 1fr 1fr;
+  place-items: center; 
+}
+.pic{
+  position: relative;
+  top: -4rem;
+}
+
+#start1, #start2{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: .2s ease-in-out all;
+  font-size: 2rem;
+}
+
+#startscreen{
+  grid-template-columns: 1fr 1fr;
+  background-image: url('./assets/Background2.gif');
+  background-size:cover;
+  background-repeat: no-repeat;
+  
+}
+
+#startTitle{
+  position: absolute;
+  top: 4rem;
+  font-size: 5rem;
+  transition: .5s ease-in-out all;
+}
+#player{
+  position: absolute;
+  bottom: 14rem;
+  font-size: 2rem;
+  transition: .5s ease-in-out all;
+  text-align: center;
+  opacity: 0;
+}
+#countdown{
+  position: absolute;
+  top: 3rem;
+  font-size: 5rem;
+  transition: .5s ease-in-out all;
+  opacity: 0;
+}
+#startTime{
+  position: absolute;
+  top: 50%;
+  font-size: 5rem;
+  transition: .5s ease-in-out all;
+  opacity: 0;
+}
+
+#restartbutton{
+  position: absolute;
+  top: 10rem;
+  opacity: 0;
+  transition: .5s ease-in-out all;
+  z-index: 10;
+}
+
+
+#score{
+  position: absolute;
+  top: 16rem;
+  font-size: 5rem;
+  transition: .5s ease-in-out all;
+  opacity: 0;
+}
+
+h1 {
+  position: absolute;
+  color: hsla(0, 0%, 0%, .9);
+  font: normal 100px Varela Round, sans-serif;
+  font-family: jap;
+  height: 100px;
+  font-size: 5rem;
+  top: 2rem;
+  letter-spacing: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  animation: move linear 2500ms infinite;  
+}
+
+#defaultCanvas0{
+position: absolute;
+left: 0;
+top: 0;
+
+}
+
+
+
+
+
+
+
+
+/* ------------------- En masse crazy CSS -------------------*/
+
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.startbutton {
+  min-width: 300px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  font-family: PixelFont;
+  }
+
+button::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.startbutton:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+@keyframes move {
+  0% {
+    text-shadow:
+      4px -4px 0 rgb(255, 0, 238), 
+      3px -3px 0 rgb(255, 0, 238), 
+      2px -2px 0 rgb(255, 0, 238),
+      1px -1px 0 rgb(255, 0, 238),
+      -4px 4px 0 hsla(180, 100%, 50%, 1), 
+      -3px 3px 0 hsla(180, 100%, 50%, 1), 
+      -2px 2px 0 hsla(180, 100%, 50%, 1), 
+      -1px 1px 0 hsla(180, 100%, 50%, 1)
+    ;
+  }
+  25% {    
+    text-shadow:      
+      -4px -4px 0 hsla(180, 100%, 50%, 1), 
+      -3px -3px 0 hsla(180, 100%, 50%, 1), 
+      -2px -2px 0 hsla(180, 100%, 50%, 1), 
+      -1px -1px 0 hsla(180, 100%, 50%, 1),
+      4px 4px 0 rgb(255, 0, 238), 
+      3px 3px 0 rgb(255, 0, 238), 
+      2px 2px 0 rgb(255, 0, 238), 
+      1px 1px 0 rgb(255, 0, 238)      
+    ;
+  }
+  50% {
+    text-shadow:
+      -4px 4px 0 rgb(255, 0, 238), 
+      -3px 3px 0 rgb(255, 0, 238), 
+      -2px 2px 0 rgb(255, 0, 238), 
+      -1px 1px 0 rgb(255, 0, 238),
+      4px -4px 0 hsla(180, 100%, 50%, 1), 
+      3px -3px 0 hsla(180, 100%, 50%, 1), 
+      2px -2px 0 hsla(180, 100%, 50%, 1), 
+      1px -1px 0 hsla(180, 100%, 50%, 1)
+    ;
+  }
+  75% {
+    text-shadow:
+      4px 4px 0 hsla(180, 100%, 50%, 1), 
+      3px 3px 0 hsla(180, 100%, 50%, 1), 
+      2px 2px 0 hsla(180, 100%, 50%, 1), 
+      1px 1px 0 hsla(180, 100%, 50%, 1),
+      -4px -4px 0 rgb(255, 0, 238), 
+      -3px -3px 0 rgb(255, 0, 238), 
+      -2px -2px 0 rgb(255, 0, 238), 
+      -1px -1px 0 rgb(255, 0, 238)      
+    ;
+  }
+  100% {
+    text-shadow:
+      4px -4px 0 rgb(255, 0, 238), 
+      3px -3px 0 rgb(255, 0, 238), 
+      2px -2px 0 rgb(255, 0, 238), 
+      1px -1px 0 rgb(255, 0, 238),
+      -4px 4px 0 hsla(180, 100%, 50%, 1), 
+      -3px 3px 0 hsla(180, 100%, 50%, 1), 
+      -2px 2px 0 hsla(180, 100%, 50%, 1), 
+      -1px 1px 0 hsla(180, 100%, 50%, 1)
+    ;
+  }  
+}
